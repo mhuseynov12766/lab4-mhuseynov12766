@@ -10,22 +10,28 @@ public class Product {
     private BigDecimal price;
     private LocalDate expirationDate;
 
+    // No-args constructor (id generated automatically)
     public Product() {
+        this.id = UUID.randomUUID();
     }
 
+    // Constructor without id (id generated automatically)
     public Product(String productName, BigDecimal price, LocalDate expirationDate) {
+        this.id = UUID.randomUUID();
         this.productName = productName;
         this.price = price;
         this.expirationDate = expirationDate;
     }
 
+    // Full constructor (useful for updates if id is known)
     public Product(UUID id, String productName, BigDecimal price, LocalDate expirationDate) {
-        this.id = id;
+        this.id = id != null ? id : UUID.randomUUID();
         this.productName = productName;
         this.price = price;
         this.expirationDate = expirationDate;
     }
 
+    // Getters and setters
     public UUID getId() {
         return id;
     }
